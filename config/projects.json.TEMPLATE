@@ -1,0 +1,12 @@
+[
+	{
+		"id": "project1",
+		"name":"name of First Project",
+		"mockDirectory":"D:\\path\\to\\project\\1"
+	},
+	{
+		"id": "project2",
+		"name":"name of Second Project",
+		"mockDirectory":"D:\\path\\to\\another\\project"
+    }
+]
