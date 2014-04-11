@@ -40,7 +40,7 @@ var handle = function (req) {
 	}
 
 	return apiJson;
-}
+};
 
 var handleApi = function(req, project, apis, index) {
 	apis[index].operations[0].type = expressionHelper.generateValue(req, project, apis[index].operations[0].type);
@@ -54,10 +54,14 @@ var handleModel = function(models, modelName) {
 		{
 			// handle extended model -> fetch parent model properties
 			var parentModel = handleModel(models, currentModel.extends);
-			for (var attrname in parentModel) { combinedModel[attrname] = parentModel[attrname]; };
+			for (var attrname in parentModel) {
+				combinedModel[attrname] = parentModel[attrname];
+			}
 		}
 
-		for (var attrname in currentModel.properties) { combinedModel[attrname] = currentModel.properties[attrname]; };
+		for (var attrname in currentModel.properties) {
+			combinedModel[attrname] = currentModel.properties[attrname];
+		}
 		currentModel.properties = combinedModel;
 	}
 
@@ -68,7 +72,7 @@ var getProjectName = function(req) {
 	var path = req.url.replace('/' + properties.getProperty('swaggerApiPath') + '/', '');
 	var name = path.substring(0, path.lastIndexOf('/'));
 	return name;
-}
+};
 
 exports.handle = handle;
 

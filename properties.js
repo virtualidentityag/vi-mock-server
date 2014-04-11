@@ -5,7 +5,7 @@ var properties = init();
 
 exports.getProperty = function(name) {
   return properties[name];
-}
+};
 
 function init() {
     var filepath = "config/config.json";
@@ -13,4 +13,4 @@ function init() {
     
     console.log("read properties file " + filepath + ": " + JSON.stringify(properties));
     return properties;
-}
+};

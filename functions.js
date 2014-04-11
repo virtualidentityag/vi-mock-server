@@ -23,11 +23,10 @@ exports.loremIpsum = function (req, project, min, max) {
 	max = max || min;
 	var count = exports.randomNumber(req, project, min, max);
 
-	var result = loremIpsum({
+	return loremIpsum({
 		count: count          // Number of words, sentences, or paragraphs to generate.
 		, units: 'words'
 	});
-	return result;
 };
 
 exports.randomOption = function (req, project, options) {

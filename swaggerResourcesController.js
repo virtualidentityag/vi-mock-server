@@ -28,13 +28,13 @@ var handle = function(req) {
 	}
 
 	return resourcesJson;
-}
+};
 
 var getProjectName = function(req) {
 	var pathname = url.parse(req.url, true).pathname;
 	var name = pathname.substr(pathname.lastIndexOf('/')+1);
 	return name;
-}
+};
 
 exports.handle = handle;
 

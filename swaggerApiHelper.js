@@ -21,7 +21,7 @@ var getApiElementForRequest = function(req, project) {
 		}
     });
     return value;
-}
+};
 
 var getModelByType = function getModelByType(req, project, type) {
 	var model;
@@ -46,8 +46,12 @@ var getModelByType = function getModelByType(req, project, type) {
 
 				var currentModel = modelDefinition.properties;
 				model = {};
-				for (var attrname in parentModel) { model[attrname] = parentModel[attrname]; };
-				for (var attrname in currentModel) { model[attrname] = currentModel[attrname]; };
+				for (var attrname in parentModel) {
+					model[attrname] = parentModel[attrname];
+				}
+				for (var attrname in currentModel) {
+					model[attrname] = currentModel[attrname];
+				}
 			}
 		});
 	}

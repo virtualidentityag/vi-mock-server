@@ -10,6 +10,6 @@ var handle = function (req) {
 		result.push(project);
 	});
 	return result;
-}
+};
 exports.handle = handle;
 
