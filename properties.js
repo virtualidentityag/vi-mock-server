@@ -8,7 +8,7 @@ exports.getProperty = function(name) {
 };
 
 function init() {
-    var filepath = "config/config.json";
+    var filepath = __dirname + "/config/config.json";
     var properties = fileHelper.getFileContentAsJson(filepath);
     
     console.log("read properties file " + filepath + ": " + JSON.stringify(properties));

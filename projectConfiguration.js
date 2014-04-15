@@ -5,7 +5,7 @@ var fileHelper = require('./fileHelper');
 var getConfigFilePath = function() {
     var args = process.argv.slice(2);
 
-    var result = "config/projects.json";
+    var result = "./config/projects.json";
     if (args.length < 1) {
         console.warn("WARN: Argument with file path to project configuration is missing, using default: '" + result + "'");
     } else {
