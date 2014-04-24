@@ -2,6 +2,8 @@ var functions = require('./functions');
 var fileHelper = require('./fileHelper');
 var swaggerApiHelper = require('./swaggerApiHelper');
 
+var path = require('path');
+
 var referenceRegex = new RegExp(/\$ref\:(\w.*)/);
 var functionWithArrayParameterRegex = new RegExp(/(\w.*)\(\[(.*)\]\)/);
 var functionWithParameterRegex = new RegExp(/(\w.*)\((.*)\)/);
@@ -125,7 +127,7 @@ var executeFunctionByName = function executeFunctionByName(functionName, context
 	try {
 		return context[functionName].apply(this, args);
 	} catch (err) {
-		var customFunctions = require(project.mockDirectory + '/customFunctions');
+		var customFunctions = require(path.resolve(project.mockDirectory + '/customFunctions'));
 		try {
 			return customFunctions[functionName].apply(this, args);
 		} catch (err) {

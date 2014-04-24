@@ -13,5 +13,10 @@
 		"id": "allianz",
 		"name":"Allianz GMMP",
 		"mockDirectory":"D:\\projects\\VI\\mockserver\\mock"
+	},
+	{
+		"id": "osramw2papproval",
+		"name":"Osram W2P Approval",
+		"mockDirectory":"D:\\projects\\Osram\\OMCP\\svn\\trunk\\web\\jsp\\editor\\w2p\\api"
 	}
 ]

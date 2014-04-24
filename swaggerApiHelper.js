@@ -7,15 +7,17 @@ var getApiElementForRequest = function(req, project) {
 	var mocks = fileHelper.collect(project.mockDirectory);
     
     var value;
+	var lengthOfMatch = 0;
     mocks.forEach(function(file) {
 		var apiDefinition = fileHelper.getFileContentAsJson(file);
 		if(typeof apiDefinition !== 'undefined') {
 		  apiDefinition.apis.forEach(function(api) {
 			var replacedPath = api.path.replace(/\{(.*)\}/, '.*');
 			var regex = new RegExp(replacedPath);
-			if(pathname.match(regex))
+			if(pathname.match(regex) && replacedPath.length > lengthOfMatch )
 			{
 				value = api;
+				lengthOfMatch = replacedPath.length;
 			}
 		  });
 		}

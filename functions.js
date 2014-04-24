@@ -18,14 +18,14 @@ exports.randomColor = function () {
 	return '#' + Math.random().toString(16).slice(2, 8);
 };
 
-exports.loremIpsum = function (req, project, min, max) {
+exports.loremIpsum = function (req, project, min, max, units) {
 	min = min || exports.randomNumber(req, project, 1, 20);
 	max = max || min;
 	var count = exports.randomNumber(req, project, min, max);
 
 	return loremIpsum({
 		count: count          // Number of words, sentences, or paragraphs to generate.
-		, units: 'words'
+		, units: units || 'words'
 	});
 };
 
@@ -89,12 +89,17 @@ exports.randomNumber = function (req, project, min, max) {
 	return (Math.floor(Math.random() * (max - min + 1)) + min);
 };
 
+exports.randomFileSize = function (req, project, min, max) {
+	var num = exports.randomNumber(req, project, min, max);
+	return num + exports.randomOption(req, project, [' MB', ' KB']);
+};
+
 exports.pathVariable = function (req, project, name) {
 	var value;
 	var api = swaggerApiHelper.getApiElementForRequest(req, project);
 	if(typeof api !== 'undefined')
 	{
-	
+
 		var pattern = '\\{' + name + '\\}';
 		var regexPathVariable = new RegExp(pattern);
 		var apiPath = '/' + project.id + api.path;
@@ -126,7 +131,7 @@ exports.pathVariable = function (req, project, name) {
 
 exports.parameter = function (req, project, name) {
 	var value;
-	
+
 	var q = url.parse(req.url, true).query;
 	for(var key in q) {
 		if(q.hasOwnProperty(key) && typeof q[key] !== 'undefined' && key === name) {
