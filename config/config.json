@@ -1,9 +1,9 @@
 {
 	"serverHost":"127.0.0.1",
-	"serverPort":"1337",
+	"serverPort":"9001",
 	"swaggerRessourcesPath":"swagger/resources/",
 	"swaggerApiPath":"swagger/api",
 	"apiVersion":"1.0.0",
 	"swaggerVersion":"1.2",
-	"responseDelay": 1000
+	"responseDelay": 0
 }
