@@ -2,7 +2,7 @@
 	"name": "vi-mock-server",
 	"description": "Mock server based on swagger with added dummy image generator",
 	"author": "HMB <dev.hmb@virtual-identity.com>",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"dependencies": {
 		"express": ">= 3.4.7",
 		"imagemagick": ">= 0.1.3",
