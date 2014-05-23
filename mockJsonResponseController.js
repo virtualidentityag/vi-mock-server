@@ -42,22 +42,19 @@ var getProjectName = function(req) {
 };
 
 function getModelByRequest(req, project) {
-	var api = swaggerApiHelper.getApiElementForRequest(req, project);
+	var operation = swaggerApiHelper.getApiOperationForRequest(req, project);
 	var type;
-	if (typeof api !== 'undefined') {
-		type = expressionHelper.generateValue(req, project, api.operations[0].type);
+	if (typeof operation !== 'undefined') {
+		type = expressionHelper.generateValue(req, project, operation.type);
 	}
 	return swaggerApiHelper.getModelByType(req, project, type);
 }
 
 function getEnvelopeByRequest(req, project) {
-	var api = swaggerApiHelper.getApiElementForRequest(req, project);
-	console.log("api", api);
+	var operation = swaggerApiHelper.getApiOperationForRequest(req, project);
 	var envelope;
-
-	if (typeof api !== 'undefined') {
-		envelope = expressionHelper.generateValue(req, project, api.operations[0].envelope);
-		console.log("envelope1", envelope);
+	if (typeof operation !== 'undefined') {
+		envelope = expressionHelper.generateValue(req, project, operation.envelope);
 	}
 	return swaggerApiHelper.getModelByType(req, project, envelope);
 }

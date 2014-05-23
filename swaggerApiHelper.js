@@ -25,6 +25,18 @@ var getApiElementForRequest = function(req, project) {
     return value;
 };
 
+var getApiOperationForRequest = function(req, project) {
+	var element = getApiElementForRequest(req, project);
+	var requestOperation;
+	element.operations.forEach(function(operation) {
+		if(operation.method === req.method)
+		{
+			requestOperation = operation;
+		}
+	});
+	return requestOperation;
+};
+
 var getModelByType = function getModelByType(req, project, type) {
 	var model;
 
@@ -61,4 +73,5 @@ var getModelByType = function getModelByType(req, project, type) {
 };
 
 exports.getApiElementForRequest = getApiElementForRequest;
+exports.getApiOperationForRequest = getApiOperationForRequest;
 exports.getModelByType = getModelByType;

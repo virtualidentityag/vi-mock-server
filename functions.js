@@ -7,6 +7,14 @@ var extend = require('extend');
 
 extend(true, exports, casual);
 
+exports.optional = function(req, project, funcName){
+	if(exports[funcName]){
+		return exports.randomBoolean(req, project) ? exports[funcName](req, project) : null;
+	}else{
+		return null;
+	}
+};
+
 exports.randomString = function (req, project, length) {
 	var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	var result = '';
