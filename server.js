@@ -7,7 +7,8 @@ var app = express();
 var imGen = require('./imageGenerator');
 
 var mockJsonResponseController = require('./mockJsonResponseController'); 
-var swaggerResourcesController = require('./swaggerResourcesController'); 
+var validateJsonController = require('./validateJsonController');
+var swaggerResourcesController = require('./swaggerResourcesController');
 var swaggerApiController = require('./swaggerApiController'); 
 var configProjectsController = require('./configProjectsController');
 
@@ -53,7 +54,9 @@ app.get('/imageGenerator/:width/:height/:makeRandom?*', function(req, res) {
 
 function getController(req)
 {
-	var pathname = url.parse(req.url, true).pathname;
+	var request = url.parse(req.url, true);
+	var pathname = request.pathname;
+	var query = request.query;
 	switch (true) {
 		case /\/config\/projects.*/.test(pathname):
 			return configProjectsController;
@@ -66,6 +69,10 @@ function getController(req)
 			break;
 	}
 
+	if(query.swaggerValidate == 'true')
+	{
+		return validateJsonController;
+	}
 	return mockJsonResponseController;
 }
 
