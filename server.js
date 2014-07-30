@@ -2,17 +2,24 @@ var url = require('url');
 var fs = require('fs');
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 var imGen = require('./imageGenerator');
 
-var mockJsonResponseController = require('./mockJsonResponseController'); 
+var mockJsonResponseController = require('./mockJsonResponseController');
 var validateJsonController = require('./validateJsonController');
 var swaggerResourcesController = require('./swaggerResourcesController');
-var swaggerApiController = require('./swaggerApiController'); 
+var swaggerApiController = require('./swaggerApiController');
 var configProjectsController = require('./configProjectsController');
 
 var properties = require('./properties');
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 // prevent error messages in the console caused by missing favicon
 app.get( '/favicon.ico', function ( req, res ) {
